@@ -1,0 +1,5 @@
+<!-- REPLACE ME: swap for your real favicon/logo mark. This is a simple placeholder "A" monogram. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="8" fill="#2954ff"/>
+  <text x="16" y="22" font-family="Arial, sans-serif" font-size="16" font-weight="800" fill="#ffffff" text-anchor="middle">A</text>
+</svg>
