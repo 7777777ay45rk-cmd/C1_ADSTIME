@@ -1,9 +1,13 @@
 # ADSTIME - clean URL routing
 # WHY: this whole file just makes "/pricing" serve "pricing.php" without ever showing
-# ".php" in the address bar. There's no RewriteBase set on purpose - all substitutions
-# below are relative, so Apache resolves them against whatever folder this .htaccess is
-# actually in. That's what lets the same file work at the domain root or inside a
-# subfolder used for local testing, matching how BASE_PATH works in includes/config.php.
+# ".php" in the address bar. There's no RewriteBase set on purpose, so this works the same
+# at the domain root or inside a subfolder used for local testing (matching how BASE_PATH
+# works in includes/config.php) - but that means every rule that redirects the browser
+# (the [R] flag) has to build its target from %{THE_REQUEST} into an absolute "/..." path
+# rather than a plain relative filename. A relative redirect target needs RewriteBase to be
+# set correctly, and without it Apache's guess can build the wrong URL inside a subfolder.
+# Rules that only rewrite internally (no [R], no flag visible to the browser) don't have
+# this problem and can stay relative.
 
 RewriteEngine On
 
@@ -16,14 +20,24 @@ ServerSignature Off
 RewriteRule ^sitemap\.xml$ sitemap.php [L]
 
 # WHY: without this, a direct request for sitemap.php would fall through to the generic
-# ".php" redirect below and land on a bare "/sitemap" URL instead of the real "/sitemap.xml"
-RewriteRule ^sitemap(\.php)?$ sitemap.xml [R=301,L,NC]
+# ".php" redirect below and land on a bare "/sitemap" URL instead of the real "/sitemap.xml".
+# WHY %{THE_REQUEST} instead of matching the URI directly: the rule above internally rewrites
+# sitemap.xml -> sitemap.php, which re-enters this whole file from the top. Matching the URI
+# would catch that internal rewrite too and bounce it right back out as a redirect loop.
+# THE_REQUEST always holds the browser's original request line, so this only fires for a real
+# direct hit on sitemap.php. Building the target from %1 (an absolute path, starts with "/")
+# instead of a bare "sitemap.xml" also sidesteps a classic mod_rewrite trap: a *relative*
+# substitution combined with [R] needs an explicit RewriteBase to build the right redirect
+# inside a subfolder, or it wrongly redirects to the *filesystem* path instead of the URL path.
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\s(/(?:.*/)?)sitemap(?:\.php)?[\s?] [NC]
+RewriteRule ^ %1sitemap.xml [R=301,L]
 
 # SEO-NOTE: send /index and /index.php to the real homepage URL so there's only one
 # URL for the homepage instead of three separate copies of the same content.
-# WHY "./" and not "/": a relative target here gets resolved against whatever folder this
-# .htaccess is actually in, so it still lands on the right homepage inside a subfolder too.
-RewriteRule ^index(\.php)?$ ./ [R=301,L,NC]
+# WHY %{THE_REQUEST} here too: same reasoning as the sitemap rule above - it's the only way
+# to build an absolute, subfolder-safe redirect target without hardcoding RewriteBase.
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\s(/(?:.*/)?)index(?:\.php)?[\s?] [NC]
+RewriteRule ^ %1 [R=301,L]
 
 # SEO-NOTE: if someone requests /page.php directly (or an old bookmark/link does),
 # 301 redirect to the clean /page URL so there's only ever one canonical URL per page.
