@@ -1,0 +1,135 @@
+<!--
+  ADSTIME — Client logo wall ("Trusted by") section
+  Fragment only, PHP-aware: uses <?php echo BASE_PATH; ?> for image paths so it works
+  regardless of subdirectory install, same convention as the rest of the site.
+  Drop this directly into index.php wherever you want it (a common spot: right after
+  the hero, or right before the testimonial section).
+
+  Different pattern from the testimonial slider on purpose: this is a continuous,
+  self-running two-row marquee (rows drift opposite directions) rather than a card
+  slider with arrows/dots - a logo wall reads better as ambient motion than as
+  something someone actively steps through.
+
+  Logos live in assets/img/brand/ - add or remove a <div class="lw-logo"> entry in
+  each row to change the set; the two rows just need roughly the same logo count to
+  stay visually balanced. Everything auto-loops seamlessly because each row's logo
+  list is duplicated once in the markup (that's the "loop" set) — don't remove the
+  duplicate half or the animation will jump.
+-->
+
+<style>
+  .lw-section { padding: 80px 0; overflow: hidden; }
+  .lw-head { text-align: center; max-width: 620px; margin: 0 auto 48px; }
+  .lw-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--font-mono); font-size: 0.78rem; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-primary);
+    margin-bottom: 14px;
+  }
+  .lw-eyebrow::before { content: ""; width: 18px; height: 2px; background: var(--gradient-brand); display: inline-block; }
+  .lw-head h2 {
+    font-family: var(--font-display); font-weight: 700; letter-spacing: -0.01em;
+    font-size: clamp(1.6rem, 3vw, 2.1rem); color: var(--color-ink); margin: 0 0 10px;
+  }
+  .lw-head p { color: var(--color-body); font-size: 1.02rem; margin: 0; line-height: 1.55; }
+
+  .lw-rows { display: flex; flex-direction: column; gap: 20px; }
+  .lw-row {
+    position: relative;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+  }
+  .lw-track {
+    display: flex; align-items: center; gap: 18px; width: max-content;
+    animation: lwScrollLeft 38s linear infinite;
+  }
+  .lw-row--reverse .lw-track { animation-name: lwScrollRight; animation-duration: 34s; }
+  .lw-rows:hover .lw-track { animation-play-state: paused; }
+
+  @keyframes lwScrollLeft { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @keyframes lwScrollRight { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+  @media (prefers-reduced-motion: reduce) {
+    .lw-track { animation: none; }
+  }
+
+  .lw-logo {
+    flex: 0 0 auto;
+    width: 168px; height: 92px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    display: flex; align-items: center; justify-content: center;
+    padding: 18px 22px;
+    transition: border-color .25s ease, box-shadow .25s ease, transform .25s ease;
+  }
+  .lw-logo img {
+    max-width: 100%; max-height: 100%; object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.62;
+    transition: filter .3s ease, opacity .3s ease;
+  }
+  .lw-logo:hover {
+    border-color: var(--color-primary);
+    box-shadow: 0 14px 30px -14px rgba(67,56,202,0.28);
+    transform: translateY(-3px);
+  }
+  .lw-logo:hover img { filter: grayscale(0%); opacity: 1; }
+
+  @media (max-width: 640px) {
+    .lw-section { padding: 56px 0; }
+    .lw-logo { width: 128px; height: 76px; padding: 14px 16px; }
+    .lw-track { gap: 12px; }
+  }
+</style>
+
+<section class="lw-section">
+  <div class="container">
+    <div class="lw-head">
+      <span class="lw-eyebrow">Brands we've worked with</span>
+      <h2>Trusted by teams building something real</h2>
+      <p>From D2C storefronts to real-estate developers, here are a few of the brands whose channels we run.</p>
+    </div>
+  </div>
+
+  <div class="lw-rows">
+    <div class="lw-row">
+      <div class="lw-track">
+        <!-- Set A -->
+        <div class="lw-logo"><img src="<?php echo BASE_PATH; ?>/assets/img/brand/absolute-basics.webp" alt="Absolute Basics" loading="lazy"></div>
+        <div class="lw-logo"><img src="<?php echo BASE_PATH; ?>/assets/img/brand/avision-solar.webp" alt="Avision Solar" loading="lazy"></div>
+        <div class="lw-logo"><img src="<?php echo BASE_PATH; ?>/assets/img/brand/backlink-folio.webp" alt="Backlink Folio" loading="lazy"></div>
+        <div class="lw-logo"><img src="<?php echo BASE_PATH; ?>/assets/img/brand/cvante.webp" alt="CVanté" loading="lazy"></div>
+        <div class="lw-logo"><img src="<?php echo BASE_PATH; ?>/assets/img/brand/ggt-foods.webp" alt="GGT" loading="lazy"></div>
+        <div class="lw-logo"><img src="<?php echo BASE_PATH; ?>/assets/img/brand/massiri-heights-1.webp" alt="Massiri Heights" loading="lazy"></div>
+        <div class="lw-logo"><img src="<?php echo BASE_PATH; ?>/assets/img/brand/nestorbird.webp" alt="NestorBird" loading="lazy"></div>
+        <!-- Set A repeated so the loop is seamless - do not remove -->
+        <div class="lw-logo"><img src="<?php echo BASE_PATH; ?>/assets/img/brand/absolute-basics.webp" alt="Absolute Basics" loading="lazy"></div>
+        <div class="lw-logo"><img src="<?php echo BASE_PATH; ?>/assets/img/brand/avision-solar.webp" alt="Avision Solar" loading="lazy"></div>
+        <div class="lw-logo"><img src="<?php echo BASE_PATH; ?>/assets/img/brand/backlink-folio.webp" alt="Backlink Folio" loading="lazy"></div>
+        <div class="lw-logo"><img src="<?php echo BASE_PATH; ?>/assets/img/brand/cvante.webp" alt="CVanté" loading="lazy"></div>
+        <div class="lw-logo"><img src="<?php echo BASE_PATH; ?>/assets/img/brand/ggt-foods.webp" alt="GGT" loading="lazy"></div>
+        <div class="lw-logo"><img src="<?php echo BASE_PATH; ?>/assets/img/brand/massiri-heights-1.webp" alt="Massiri Heights" loading="lazy"></div>
+        <div class="lw-logo"><img src="<?php echo BASE_PATH; ?>/assets/img/brand/nestorbird.webp" alt="NestorBird" loading="lazy"></div>
+      </div>
+    </div>
+
+    <div class="lw-row lw-row--reverse">
+      <div class="lw-track">
+        <!-- Set B -->
+        <div class="lw-logo"><img src="<?php echo BASE_PATH; ?>/assets/img/brand/nxtoffice.webp" alt="Next Office" loading="lazy"></div>
+        <div class="lw-logo"><img src="<?php echo BASE_PATH; ?>/assets/img/brand/socialclimate.webp" alt="SocialClimate.in" loading="lazy"></div>
+        <div class="lw-logo"><img src="<?php echo BASE_PATH; ?>/assets/img/brand/spaciya.webp" alt="Spaciya Advisors" loading="lazy"></div>
+        <div class="lw-logo"><img src="<?php echo BASE_PATH; ?>/assets/img/brand/stepskin.webp" alt="Step Skin India" loading="lazy"></div>
+        <div class="lw-logo"><img src="<?php echo BASE_PATH; ?>/assets/img/brand/tire.webp" alt="Tire Mobile Fix" loading="lazy"></div>
+        <div class="lw-logo"><img src="<?php echo BASE_PATH; ?>/assets/img/brand/zerom.webp" alt="Zerom Studio" loading="lazy"></div>
+        <!-- Set B repeated so the loop is seamless - do not remove -->
+        <div class="lw-logo"><img src="<?php echo BASE_PATH; ?>/assets/img/brand/nxtoffice.webp" alt="Next Office" loading="lazy"></div>
+        <div class="lw-logo"><img src="<?php echo BASE_PATH; ?>/assets/img/brand/socialclimate.webp" alt="SocialClimate.in" loading="lazy"></div>
+        <div class="lw-logo"><img src="<?php echo BASE_PATH; ?>/assets/img/brand/spaciya.webp" alt="Spaciya Advisors" loading="lazy"></div>
+        <div class="lw-logo"><img src="<?php echo BASE_PATH; ?>/assets/img/brand/stepskin.webp" alt="Step Skin India" loading="lazy"></div>
+        <div class="lw-logo"><img src="<?php echo BASE_PATH; ?>/assets/img/brand/tire.webp" alt="Tire Mobile Fix" loading="lazy"></div>
+        <div class="lw-logo"><img src="<?php echo BASE_PATH; ?>/assets/img/brand/zerom.webp" alt="Zerom Studio" loading="lazy"></div>
+      </div>
+    </div>
+  </div>
+</section>

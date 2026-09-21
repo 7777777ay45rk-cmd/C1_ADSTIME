@@ -14,7 +14,7 @@ $post_date = '2026-08-01';
 
 require_once __DIR__ . '/../includes/config.php';
 
-$page_title = $post_title . ' - ADSTIME Blog';
+$page_title = $post_title . ' - AdsTime Blog';
 $meta_description = $post_description;
 $canonical_path = '/blog/getting-started-with-performance-marketing';
 

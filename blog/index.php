@@ -2,8 +2,8 @@
 require_once __DIR__ . '/../includes/config.php';
 require_once __DIR__ . '/../includes/blog-functions.php';
 
-$page_title = 'Blog - ADSTIME';
-$meta_description = 'Straightforward articles about running Google Ads and Meta Ads, from the ADSTIME team.';
+$page_title = 'Blog - AdsTime';
+$meta_description = 'Straightforward articles about running Google Ads and Meta Ads, from the AdsTime team.';
 $canonical_path = '/blog';
 
 // SEO-NOTE: posts are discovered automatically from /blog/*.php - just add a new file and it appears here.

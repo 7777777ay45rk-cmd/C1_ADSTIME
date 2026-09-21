@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/includes/config.php';
 
-$page_title = 'Page Not Found - ADSTIME';
+$page_title = 'Page Not Found - AdsTime';
 $meta_description = 'The page you\'re looking for doesn\'t exist.';
 $canonical_path = '/404';
 

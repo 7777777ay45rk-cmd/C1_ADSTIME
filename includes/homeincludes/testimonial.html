@@ -1,0 +1,314 @@
+<!--
+  ADSTIME — Testimonial slider section
+  Drop-in, self-contained (styles + script are scoped to .ts-section so it
+  won't clash with the rest of the site's CSS). Uses the same brand tokens
+  as the main site (indigo -> violet -> coral -> amber gradient, Unbounded /
+  Plus Jakarta Sans / JetBrains Mono).
+
+  TO CONVERT TO PHP:
+  Turn the TESTIMONIALS array at the bottom of the <script> into a PHP array
+  (or pull it from a DB) and foreach() it to build the same markup server-side
+  — the slider JS doesn't care whether the .ts-card elements were printed by
+  PHP or hardcoded, it just reads whatever is inside #tsTrack on load.
+  Swap the placehold.co avatar URLs for real photos whenever you have them.
+-->
+
+<section class="ts-section">
+  <style>
+    .ts-section {
+      --ts-primary: #4338CA;
+      --ts-violet: #9333EA;
+      --ts-accent: #F0466B;
+      --ts-amber: #FBA919;
+      --ts-ink: #16121F;
+      --ts-body: #55506A;
+      --ts-muted: #85809A;
+      --ts-border: #E7E2D8;
+      --ts-page: #FBF9F4;
+      --ts-surface: #ffffff;
+      --ts-gradient: linear-gradient(100deg, var(--ts-primary) 0%, var(--ts-violet) 34%, var(--ts-accent) 66%, var(--ts-amber) 100%);
+      --ts-font-base: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --ts-font-display: 'Unbounded', 'Arial Black', -apple-system, sans-serif;
+      --ts-font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+      font-family: var(--ts-font-base);
+      background: var(--ts-page);
+      padding: 90px 0;
+      overflow: hidden;
+    }
+    .ts-section * { box-sizing: border-box; }
+    .ts-wrap { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+    .ts-head { text-align: center; max-width: 620px; margin: 0 auto 52px; }
+    .ts-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--ts-font-mono); font-size: 0.78rem; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase; color: var(--ts-primary);
+      margin-bottom: 14px;
+    }
+    .ts-eyebrow::before { content: ""; width: 18px; height: 2px; background: var(--ts-gradient); display: inline-block; }
+    .ts-head h2 {
+      font-family: var(--ts-font-display); font-weight: 700; letter-spacing: -0.01em;
+      font-size: clamp(1.7rem, 3vw, 2.35rem); color: var(--ts-ink); margin: 0 0 12px;
+    }
+    .ts-head p { color: var(--ts-body); font-size: 1.05rem; margin: 0; line-height: 1.55; }
+
+    /* ---- Slider shell ---- */
+    .ts-slider { position: relative; }
+    .ts-viewport { overflow: hidden; }
+    .ts-track {
+      display: flex;
+      transition: transform 0.5s cubic-bezier(.65,0,.35,1);
+      will-change: transform;
+    }
+    .ts-slide {
+      flex: 0 0 33.3333%;
+      padding: 6px 14px;
+      display: flex;
+    }
+
+    .ts-card {
+      background: var(--ts-surface);
+      border: 1px solid var(--ts-border);
+      border-radius: 22px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      width: 100%;
+      box-shadow: 0 2px 8px rgba(22,18,31,0.05);
+    }
+    .ts-stars { display: flex; gap: 3px; }
+    .ts-stars svg { width: 16px; height: 16px; fill: var(--ts-amber); }
+    .ts-quote {
+      color: var(--ts-ink); font-size: 1rem; line-height: 1.6; margin: 0;
+      flex-grow: 1;
+    }
+    .ts-metric {
+      align-self: flex-start;
+      font-family: var(--ts-font-mono);
+      font-size: 0.76rem; font-weight: 600; color: var(--ts-primary);
+      background: rgba(67,56,202,0.08);
+      padding: 5px 11px; border-radius: 999px;
+    }
+    .ts-who { display: flex; align-items: center; gap: 12px; margin-top: 4px; }
+    .ts-who img {
+      width: 46px; height: 46px; border-radius: 50%; object-fit: cover;
+      flex-shrink: 0; background: var(--ts-page);
+    }
+    .ts-who strong { display: block; font-size: 0.94rem; color: var(--ts-ink); }
+    .ts-who span { display: block; font-size: 0.82rem; color: var(--ts-muted); margin-top: 1px; }
+
+    /* ---- Controls ---- */
+    .ts-controls {
+      display: flex; align-items: center; justify-content: center;
+      gap: 22px; margin-top: 36px;
+    }
+    .ts-arrow {
+      width: 44px; height: 44px; border-radius: 50%;
+      border: 1px solid var(--ts-border); background: var(--ts-surface);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: all 0.2s ease; flex-shrink: 0;
+    }
+    .ts-arrow:hover { background: var(--ts-ink); border-color: var(--ts-ink); }
+    .ts-arrow:hover svg { stroke: #fff; }
+    .ts-arrow svg { width: 18px; height: 18px; stroke: var(--ts-ink); transition: stroke 0.2s ease; }
+    .ts-dots { display: flex; align-items: center; gap: 9px; }
+    .ts-dot {
+      width: 8px; height: 8px; border-radius: 50%; border: none;
+      background: var(--ts-border); cursor: pointer; padding: 0;
+      transition: all 0.25s ease;
+    }
+    .ts-dot.is-active { width: 22px; border-radius: 4px; background: var(--ts-gradient); }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 900px) {
+      .ts-slide { flex: 0 0 50%; }
+    }
+    @media (max-width: 640px) {
+      .ts-section { padding: 64px 0; }
+      .ts-slide { flex: 0 0 100%; padding: 6px 4px; }
+      .ts-card { padding: 26px; }
+    }
+  </style>
+
+  <div class="ts-wrap">
+    <div class="ts-head">
+      <span class="ts-eyebrow">Client results</span>
+      <h2>Don't take our word for it</h2>
+      <p>A few of the teams running paid media, SEO, content, and more through ADSTIME — in their own words.</p>
+    </div>
+
+    <div class="ts-slider">
+      <div class="ts-viewport">
+        <div class="ts-track" id="tsTrack">
+          <!-- slides are rendered by the script below from the TESTIMONIALS array -->
+        </div>
+      </div>
+
+      <div class="ts-controls">
+        <button class="ts-arrow" id="tsPrev" aria-label="Previous testimonial">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <div class="ts-dots" id="tsDots"></div>
+        <button class="ts-arrow" id="tsNext" aria-label="Next testimonial">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  (function () {
+    // ---- WHY: content lives in one array so converting to PHP later is a
+    // straight foreach loop over the same fields, printed server-side instead of by this script.
+    var TESTIMONIALS = [
+      {
+        quote: "ADSTIME took over paid media and SEO in the same month and finally gave us one number to look at instead of five different dashboards.",
+        metric: "+340% qualified leads",
+        name: "Sam Massiri",
+        role: "Massiri Heights",
+        avatar: "https://placehold.co/92x92/4338CA/ffffff?text=RK",
+        rating: 5
+      },
+      {
+        quote: "We'd tried three agencies before this. ADSTIME is the first one that actually explained why a campaign was or wasn't working.",
+        metric: "6.2x average ROAS",
+        name: "Nancy Srivastava",
+        role: "Social Climate",
+        avatar: "https://placehold.co/92x92/9333EA/ffffff?text=NS",
+        rating: 5
+      },
+      {
+        quote: "Email and WhatsApp alone now bring in more revenue than our old paid budget did on its own. The automation setup paid for itself in six weeks.",
+        metric: "94% client retention",
+        name: "Dhruv",
+        role: "Cloud Vandexa",
+        avatar: "https://placehold.co/92x92/F0466B/ffffff?text=CV",
+        rating: 5
+      },
+      {
+        quote: "Content and influencer used to be an afterthought for us. ADSTIME folded it into the same reporting as our ads, so we could finally see what was pulling its weight.",
+        metric: "2.1M monthly reach",
+        name: "Sanskriti Ventures",
+        role: "Devendra Shastri",
+        avatar: "https://placehold.co/92x92/FBA919/ffffff?text=DS",
+        rating: 5
+      },
+      {
+        quote: "The monthly call takes twenty minutes because the numbers are already clear. That's the whole pitch, and it's held up for two years now.",
+        metric: "3.3X+ tracked roas",
+        name: "Saurabh",
+        role: "Backlink Folio",
+        avatar: "https://placehold.co/92x92/16121F/ffffff?text=BF",
+        rating: 5
+      }
+    ];
+
+    var track = document.getElementById('tsTrack');
+    var dotsWrap = document.getElementById('tsDots');
+    var prevBtn = document.getElementById('tsPrev');
+    var nextBtn = document.getElementById('tsNext');
+    var section = document.currentScript.closest('.ts-section');
+
+    function starsSvg(n) {
+      var s = '';
+      for (var i = 0; i < n; i++) {
+        s += '<svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2-5.4 3.2 1.3-6-4.6-4.1 6.1-.6z"/></svg>';
+      }
+      return s;
+    }
+
+    TESTIMONIALS.forEach(function (t) {
+      var slide = document.createElement('div');
+      slide.className = 'ts-slide';
+      slide.innerHTML =
+        '<div class="ts-card">' +
+          '<div class="ts-stars">' + starsSvg(t.rating) + '</div>' +
+          '<p class="ts-quote">“' + t.quote + '”</p>' +
+          '<span class="ts-metric">' + t.metric + '</span>' +
+          '<div class="ts-who">' +
+            '<img src="' + t.avatar + '" alt="Photo of ' + t.name + '" loading="lazy">' +
+            '<div><strong>' + t.name + '</strong><span>' + t.role + '</span></div>' +
+          '</div>' +
+        '</div>';
+      track.appendChild(slide);
+    });
+
+    // ---- how many slides are visible at once, mirrors the CSS breakpoints
+    function perView() {
+      var w = section.clientWidth;
+      if (w <= 640) return 1;
+      if (w <= 900) return 2;
+      return 3;
+    }
+
+    var index = 0;
+    var total = TESTIMONIALS.length;
+    var timer = null;
+
+    function maxIndex() { return Math.max(0, total - perView()); }
+
+    function buildDots() {
+      dotsWrap.innerHTML = '';
+      var count = maxIndex() + 1;
+      for (var i = 0; i < count; i++) {
+        var b = document.createElement('button');
+        b.className = 'ts-dot' + (i === index ? ' is-active' : '');
+        b.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+        (function (i) { b.addEventListener('click', function () { goTo(i); }); })(i);
+        dotsWrap.appendChild(b);
+      }
+    }
+
+    function render() {
+      var pct = (100 / perView()) * index;
+      track.style.transform = 'translateX(-' + pct + '%)';
+      var dots = dotsWrap.children;
+      for (var i = 0; i < dots.length; i++) {
+        dots[i].classList.toggle('is-active', i === index);
+      }
+    }
+
+    function goTo(i) {
+      index = Math.max(0, Math.min(i, maxIndex()));
+      render();
+    }
+
+    function next() { goTo(index >= maxIndex() ? 0 : index + 1); }
+    function prev() { goTo(index <= 0 ? maxIndex() : index - 1); }
+
+    function startAutoplay() {
+      stopAutoplay();
+      timer = setInterval(next, 4500);
+    }
+    function stopAutoplay() { if (timer) clearInterval(timer); }
+
+    nextBtn.addEventListener('click', function () { next(); startAutoplay(); });
+    prevBtn.addEventListener('click', function () { prev(); startAutoplay(); });
+    section.addEventListener('mouseenter', stopAutoplay);
+    section.addEventListener('mouseleave', startAutoplay);
+
+    // touch swipe
+    var startX = null;
+    track.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend', function (e) {
+      if (startX === null) return;
+      var dx = e.changedTouches[0].clientX - startX;
+      if (dx > 40) prev();
+      else if (dx < -40) next();
+      startX = null;
+      startAutoplay();
+    });
+
+    window.addEventListener('resize', function () {
+      buildDots();
+      goTo(Math.min(index, maxIndex()));
+    });
+
+    buildDots();
+    render();
+    startAutoplay();
+  })();
+  </script>
+</section>

@@ -6,24 +6,31 @@
 
 // SEO-NOTE: keep SITE_NAME and SITE_DOMAIN in sync with your Google Business Profile / Search Console
 // so titles, JSON-LD, and canonical URLs all agree on the same brand name and domain.
-define('SITE_NAME', 'ADSTIME');
+define('SITE_NAME', 'AdsTime');
 define('SITE_TAGLINE', 'Performance Marketing Agency');
-define('SITE_DOMAIN', 'https://adstime.in'); // no trailing slash
+define('SITE_DOMAIN', 'https://www.adstime.in'); // no trailing slash
 
 // WHY: a separate app/client subdomain is common for agencies (client login, reporting dashboard).
 // Point this at your real app subdomain when it exists. It's used for the header/footer "Client Login" link.
 define('APP_URL', 'https://app.adstime.in');
 
 // Contact details - shown in header/footer, contact page, and JSON-LD Organization schema
-define('CONTACT_EMAIL', 'hello@adstime.in');
-define('CONTACT_PHONE', '+91 98765 43210');
-define('CONTACT_PHONE_LINK', '+919876543210'); // digits only, used inside tel: links
-define('CONTACT_ADDRESS', 'WeWork Enam Sambhav, BKC, Mumbai, Maharashtra 400051, India');
+define('CONTACT_EMAIL', 'start@adstime.in');
+define('CONTACT_PHONE', '+91 79832 57400');
+define('CONTACT_PHONE_LINK', '+917983257400'); // digits only, used inside tel: links
+define('CONTACT_ADDRESS', 'Noida, Uttarpradesh, India');
 
-// Social links - REPLACE ME with real profile URLs (used in footer + JSON-LD "sameAs")
+// WhatsApp number used by the floating WhatsApp button - country code + number, no "+", no spaces
+// (this is the format wa.me links require)
+define('WHATSAPP_NUMBER', '917983257400');
+
+// Google Tag Manager container ID - printed into every page by includes/header.php
+define('GTM_ID', 'GTM-58DS3FVQ');
+
+// Social links - used in footer + JSON-LD "sameAs"
+define('SOCIAL_FACEBOOK', 'https://www.facebook.com/adstime.in');
 define('SOCIAL_LINKEDIN', 'https://www.linkedin.com/company/adstime');
 define('SOCIAL_INSTAGRAM', 'https://www.instagram.com/adstime.in');
-define('SOCIAL_TWITTER', 'https://twitter.com/adstimein');
 
 /**
  * BASE_PATH: the URL path prefix for every internal link/asset on the site.

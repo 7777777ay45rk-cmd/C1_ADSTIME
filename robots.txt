@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://adstime.in/sitemap.xml
+Sitemap: https://www.adstime.in/sitemap.xml
