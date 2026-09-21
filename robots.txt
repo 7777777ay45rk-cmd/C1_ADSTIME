@@ -1,4 +1,14 @@
 User-agent: *
 Allow: /
 
+# SEO-NOTE: "?list=..." isn't a URL pattern this site generates anywhere (checked - nothing reads
+# $_GET['list'], every page's canonical tag already points at the clean URL regardless of query
+# string). These are bot/scraper-guessed URLs, most likely, showing up in Search Console under
+# "Alternate page with proper canonical tag" - not an error, just Google correctly excluding the
+# duplicate. This line stops Googlebot from spending crawl budget fetching that pattern at all.
+# WHY not a blanket "Disallow: /*?*" for every query string instead: real ad-tracking params
+# (utm_source, gclid, fbclid, etc.) land on these same pages and must stay crawlable/functional -
+# only this specific junk pattern is blocked, nothing else.
+Disallow: /*?list=*
+
 Sitemap: https://www.adstime.in/sitemap.xml
