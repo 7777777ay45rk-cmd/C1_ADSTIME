@@ -197,6 +197,11 @@ a { color: var(--color-primary); text-decoration: none; }
   justify-content: space-between;
   height: 76px;
 }
+/* WHY align-self here (not changing .site-header__inner's align-items): the header row
+   centers everything vertically by default, which left an even gap above and below the logo -
+   this pins just the logo to the top edge of the 76px bar (which already sits flush at the very
+   top of the page, since .site-header has no padding), without shifting the nav links/button. */
+.site-header__inner .logo { align-self: flex-start; }
 .logo__img { height: 50px; width: 180px; display: block; }
 .logo--footer .logo__img { height: 28px; }
 .logo {
