@@ -217,7 +217,7 @@ require __DIR__ . '/includes/header.php';
       <div class="card" id="industry-local">
         <div class="card__icon" style="background:rgba(30,174,85,0.1)"><svg viewBox="0 0 24 24" fill="none" stroke="#1EAE55" stroke-width="1.8"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
         <h3>Local &amp; Service Businesses</h3>
-        <p>Google Business Profile, local SEO, and click-to-WhatsApp ads built to win the "near me" search and the call that follows. Based in Noida or Delhi? See why local teams call us the <a href="<?php echo BASE_PATH; ?>/services/best-digital-marketing-agency-in-noida">best digital marketing agency in Noida</a> or the <a href="<?php echo BASE_PATH; ?>/services/best-digital-marketing-agency-in-delhi">best digital marketing agency in Delhi</a>.</p>
+        <p>Google Business Profile, local SEO, and click-to-WhatsApp ads built to win the "near me" search and the call that follows. Based in Noida, Delhi, or Ghaziabad? See why local teams call us the <a href="<?php echo BASE_PATH; ?>/services/best-digital-marketing-agency-in-noida">best digital marketing agency in Noida</a>, the <a href="<?php echo BASE_PATH; ?>/services/best-digital-marketing-agency-in-delhi">best digital marketing agency in Delhi</a>, or the <a href="<?php echo BASE_PATH; ?>/services/best-digital-marketing-agency-in-ghaziabad">best digital marketing agency in Ghaziabad</a>.</p>
       </div>
       <div class="card" id="industry-it-saas">
         <div class="card__icon" style="background:rgba(217,146,0,0.1)"><svg viewBox="0 0 24 24" fill="none" stroke="#D18900" stroke-width="1.8"><path d="M9 17H7a5 5 0 1 1 0-10h2M15 7h2a5 5 0 1 1 0 10h-2M8 12h8"/></svg></div>
