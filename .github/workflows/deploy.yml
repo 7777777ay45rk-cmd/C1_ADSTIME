@@ -1,0 +1,54 @@
+name: Deploy to Hostinger
+
+# WHY: deploys on every push to this branch, plus a manual "Run workflow" button
+# (workflow_dispatch) in the Actions tab for re-running a deploy without a new commit.
+on:
+  push:
+    branches:
+      - claude/adstime-marketing-site-2ue82z
+  workflow_dispatch:
+
+# WHY: if two pushes land close together, queue the second deploy instead of letting
+# two FTP syncs run at the same time and race each other on the same remote folder.
+concurrency:
+  group: production-deploy
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  ftp-deploy:
+    name: FTP deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # WHY: FTP-Deploy-Action diffs against the previous commit to only upload
+          # changed files on repeat deploys; a shallow (depth-1) checkout can't do that.
+          fetch-depth: 0
+
+      - name: Upload via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          port: 21
+          protocol: ftp
+          local-dir: ./
+          # SEO-NOTE / WHY: this is Hostinger's default document root for a primary domain.
+          # If adstime.in is an ADD-ON domain on a Hostinger account hosting multiple sites,
+          # change this to /domains/adstime.in/public_html/ instead - check Hostinger's
+          # File Manager or hPanel > Websites to see which one is correct for this account.
+          server-dir: /public_html/
+          # WHY false: never let this job delete remote files that aren't in the repo.
+          # A wrong server-dir above would otherwise risk wiping unrelated files on the
+          # server instead of just failing to find the right folder.
+          dangerous-clean-slate: false
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github/**
+            **/README.md
