@@ -63,7 +63,7 @@ $active_path = $canonical_path === '/' ? '/' : rtrim($canonical_path, '/');
 <link rel="preload" href="<?php echo BASE_PATH; ?>/assets/fonts/unbounded-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="<?php echo BASE_PATH; ?>/assets/fonts/jetbrainsmono-variable.woff2" as="font" type="font/woff2" crossorigin>
 
-<link rel="stylesheet" href="<?php echo BASE_PATH; ?>/assets/css/style.css">
+<link rel="stylesheet" href="<?php echo adstime_asset_url('/assets/css/style.css'); ?>">
 
 <!-- SEO-NOTE: Organization schema is site-wide so every page tells search engines the same
      canonical business identity (name, logo, contact point, social profiles). -->

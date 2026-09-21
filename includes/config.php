@@ -58,3 +58,21 @@ $adstime_base_path = rtrim($adstime_base_path, '/');
 define('BASE_PATH', $adstime_base_path);
 
 unset($adstime_site_root, $adstime_doc_root, $adstime_base_path);
+
+/**
+ * Cache-busting helper for CSS/JS: appends "?v=<file's last-modified time>" to a BASE_PATH-relative
+ * asset URL, e.g. adstime_asset_url('/assets/css/style.css').
+ *
+ * WHY this exists: .htaccess tells browsers to cache CSS/JS for a month (good - fast repeat
+ * visits), but that means a plain reload after a deploy can keep showing the OLD file for up to
+ * a month, since the browser never asks the server if anything changed. Appending the file's own
+ * modification time as a query string changes the URL itself the moment the file's content
+ * changes, so the browser has no choice but to treat it as a brand new resource and fetch it -
+ * no more "hard refresh needed to see a CSS/JS change" for visitors.
+ */
+function adstime_asset_url(string $relativePath): string
+{
+    $fsPath = __DIR__ . '/..' . $relativePath;
+    $version = is_file($fsPath) ? filemtime($fsPath) : time();
+    return BASE_PATH . $relativePath . '?v=' . $version;
+}

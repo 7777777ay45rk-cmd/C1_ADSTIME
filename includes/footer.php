@@ -55,6 +55,6 @@
   </div>
 </footer>
 
-<script src="<?php echo BASE_PATH; ?>/assets/js/main.js" defer></script>
+<script src="<?php echo adstime_asset_url('/assets/js/main.js'); ?>" defer></script>
 </body>
 </html>
