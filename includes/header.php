@@ -162,9 +162,9 @@ $active_path = $canonical_path === '/' ? '/' : rtrim($canonical_path, '/');
               <span class="nav-mega__icon" style="background:rgba(240,70,107,0.1)"><svg viewBox="0 0 24 24" fill="none" stroke="#F0466B" stroke-width="1.8"><circle cx="12" cy="8" r="3.3"/><path d="M4 20c1.2-4 4.2-6 8-6s6.8 2 8 6"/></svg></span>
               <span><strong>Influencer Marketing</strong><small>Creator partnerships that convert</small></span>
             </a>
-            <a href="<?php echo BASE_PATH; ?>/our-services#email" class="nav-mega__item">
+            <a href="<?php echo BASE_PATH; ?>/services/email-marketing" class="nav-mega__item">
               <span class="nav-mega__icon" style="background:rgba(249,115,22,0.1)"><svg viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg></span>
-              <span><strong>Email Marketing</strong><small>Lifecycle flows &amp; campaigns</small></span>
+              <span><strong>Email Marketing</strong><small>Lifecycle flows &amp; deliverability</small></span>
             </a>
             <a href="<?php echo BASE_PATH; ?>/our-services#whatsapp" class="nav-mega__item">
               <span class="nav-mega__icon" style="background:rgba(30,174,85,0.1)"><svg viewBox="0 0 24 24" fill="none" stroke="#1EAE55" stroke-width="1.8"><path d="M3 20l1.3-3.9A8 8 0 1 1 8 19l-5 1Z"/></svg></span>

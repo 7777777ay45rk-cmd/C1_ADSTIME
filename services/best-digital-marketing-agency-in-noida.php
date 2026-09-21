@@ -356,7 +356,7 @@ require __DIR__ . '/../includes/header.php';
       <div class="card">
         <div class="card__icon" style="background:rgba(249,115,22,0.1)"><svg viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg></div>
         <h3>Email &amp; marketing automation</h3>
-        <p>Lifecycle flows and CRM-driven journeys that keep a lead warm long after they've left your site.</p>
+        <p>Lifecycle flows and CRM-driven journeys that keep a lead warm long after they've left your site. See our <a href="<?php echo BASE_PATH; ?>/services/email-marketing">full email marketing services</a>.</p>
       </div>
       <div class="card">
         <div class="card__icon" style="background:rgba(30,174,85,0.1)"><svg viewBox="0 0 24 24" fill="none" stroke="#1EAE55" stroke-width="1.8"><path d="M3 20l1.3-3.9A8 8 0 1 1 8 19l-5 1Z"/></svg></div>
