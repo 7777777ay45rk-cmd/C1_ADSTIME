@@ -54,7 +54,17 @@ $active_path = $canonical_path === '/' ? '/' : rtrim($canonical_path, '/');
 <!-- WHY: preconnect shaves a DNS/TLS round trip off the Google Fonts request -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- WHY display=optional (not swap): "swap" is what was causing the late font pop-in - it
+     paints text in the fallback font immediately, then visibly swaps to the real font once it
+     downloads. "optional" removes that swap entirely: the browser gives the font a very short
+     window (~100ms) to be ready, and if it makes it in time it's used from the very first paint;
+     if not, the page just keeps the fallback font for that visit instead of swapping mid-read.
+     The real font still gets cached in the background, so it's more likely to be ready-in-time
+     (and used from the start, no flash) on the next page the visitor loads. Also dropped the
+     unused 800 weight for each family below - nothing in style.css asks for it, so it was just
+     extra font data to download for nothing, which was delaying the font being "ready in time"
+     under display=optional. -->
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=optional" rel="stylesheet">
 
 <link rel="stylesheet" href="<?php echo BASE_PATH; ?>/assets/css/style.css">
 
