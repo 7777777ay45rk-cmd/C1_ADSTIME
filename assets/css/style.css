@@ -4,6 +4,45 @@
    Edit the :root variables below to re-theme the entire site.
    ========================================================================== */
 
+/* WHY self-hosted instead of the old Google Fonts <link>: that request was a third-party
+   DNS + TLS + download round trip that had to finish before the browser could use the real
+   font, which is what was causing the late "pop" - the page painted in a fallback font first,
+   then visibly swapped once Google's server responded. Self-hosting these three files (see
+   /assets/fonts/) and preloading them in includes/header.php lets the browser start fetching
+   the font bytes in parallel with the HTML itself, so they're normally ready before the browser
+   even needs to paint text - no fallback-then-swap, just the right font from the first frame.
+   Each file below is a variable font covering the full weight range in one download (confirmed
+   by Google Fonts itself: it served the identical file for every weight from 400 to 700 we
+   asked for), which is why one @font-face rule per family with a weight range - not four
+   separate rules - correctly covers every weight this site actually uses (400/500/600/700,
+   checked against every font-weight declaration in this file). Only the "latin" character set
+   is included (unicode-range below), matching this site's English-only copy - the same subset
+   Google itself was already serving here, so this isn't a new limitation. */
+@font-face {
+  font-family: 'Unbounded';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('../fonts/unbounded-variable.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('../fonts/plusjakartasans-variable.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('../fonts/jetbrainsmono-variable.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 :root {
   /* Color system - Adstime brand: indigo -> violet -> coral -> amber gradient
      on a warm paper ground. Re-theme the whole site by editing these. */

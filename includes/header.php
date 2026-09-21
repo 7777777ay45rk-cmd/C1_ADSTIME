@@ -51,20 +51,17 @@ $active_path = $canonical_path === '/' ? '/' : rtrim($canonical_path, '/');
 <link rel="apple-touch-icon" href="<?php echo BASE_PATH; ?>/assets/img/favicon.png">
 <meta name="theme-color" content="#4338CA">
 
-<!-- WHY: preconnect shaves a DNS/TLS round trip off the Google Fonts request -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- WHY display=optional (not swap): "swap" is what was causing the late font pop-in - it
-     paints text in the fallback font immediately, then visibly swaps to the real font once it
-     downloads. "optional" removes that swap entirely: the browser gives the font a very short
-     window (~100ms) to be ready, and if it makes it in time it's used from the very first paint;
-     if not, the page just keeps the fallback font for that visit instead of swapping mid-read.
-     The real font still gets cached in the background, so it's more likely to be ready-in-time
-     (and used from the start, no flash) on the next page the visitor loads. Also dropped the
-     unused 800 weight for each family below - nothing in style.css asks for it, so it was just
-     extra font data to download for nothing, which was delaying the font being "ready in time"
-     under display=optional. -->
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=optional" rel="stylesheet">
+<!-- WHY self-hosted + preloaded (no more Google Fonts <link>): loading fonts from
+     fonts.googleapis.com meant the browser had to open a whole extra connection (DNS + TLS +
+     request) to a different server before it even started downloading the font itself - that
+     round trip was the real cause of the late pop-in, not just a display-mode setting. These
+     <link rel="preload"> tags tell the browser to start fetching the font files (now served
+     from this same site, see /assets/css/style.css for the @font-face rules) immediately,
+     in parallel with the HTML, so they're normally ready before the page needs to paint any
+     text with them - the correct font from the first frame, not a fallback-then-swap. -->
+<link rel="preload" href="<?php echo BASE_PATH; ?>/assets/fonts/plusjakartasans-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="<?php echo BASE_PATH; ?>/assets/fonts/unbounded-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="<?php echo BASE_PATH; ?>/assets/fonts/jetbrainsmono-variable.woff2" as="font" type="font/woff2" crossorigin>
 
 <link rel="stylesheet" href="<?php echo BASE_PATH; ?>/assets/css/style.css">
 

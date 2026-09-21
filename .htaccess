@@ -85,4 +85,9 @@ ErrorDocument 404 /404
   ExpiresByType image/svg+xml "access plus 1 month"
   ExpiresByType image/png "access plus 1 month"
   ExpiresByType image/jpeg "access plus 1 month"
+  # WHY a full year for fonts specifically: these font files are self-hosted now (see
+  # assets/fonts/) and only ever change if someone swaps the actual file - a returning
+  # visitor's browser should never have to re-request them.
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType font/woff "access plus 1 year"
 </IfModule>
