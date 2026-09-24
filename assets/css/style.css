@@ -549,6 +549,11 @@ section { padding: 88px 0; }
   font-size: 0.85rem;
   color: #7d81a0;
 }
+/* WHY a separate rule from .footer__col a above: this row sits directly against the copyright
+   line, so the Sitemap link stays the same muted tone as the rest of the row instead of
+   inheriting the sitewide bright link color, which would look out of place down here. */
+.footer__bottom a { color: #7d81a0; text-decoration: none; }
+.footer__bottom a:hover { color: #fff; }
 
 /* ---------- Floating WhatsApp button ---------- */
 .whatsapp-float {

@@ -51,6 +51,7 @@
 
   <div class="container footer__bottom">
     <span>&copy; <?php echo date('Y'); ?> <?php echo htmlspecialchars(SITE_NAME); ?>. All rights reserved.</span>
+    <a href="<?php echo BASE_PATH; ?>/sitemap.xml">Sitemap</a>
     <span>Made in India.</span>
   </div>
 </footer>
