@@ -1,23 +1,28 @@
 User-agent: *
 Allow: /
 
-# SEO-NOTE: "?list=..." isn't a URL pattern this site generates anywhere (checked - nothing reads
-# $_GET['list'], every page's canonical tag already points at the clean URL regardless of query
-# string). These are bot/scraper-guessed URLs, most likely, showing up in Search Console under
-# "Alternate page with proper canonical tag" - not an error, just Google correctly excluding the
-# duplicate. This line stops Googlebot from spending crawl budget fetching that pattern at all.
-# WHY not a blanket "Disallow: /*?*" for every query string instead: real ad-tracking params
-# (utm_source, gclid, fbclid, etc.) land on these same pages and must stay crawlable/functional -
-# only this specific junk pattern is blocked, nothing else.
-Disallow: /*?list=*
+# WHY this Allow comes before the blanket "?" disallow below: assets/css/style.css and
+# assets/js/main.js are served with a cache-busting "?v=<timestamp>" query string (see
+# includes/config.php's adstime_asset_url()), so browsers always fetch a fresh copy right after
+# a deploy instead of an old cached one. Google's renderer needs to actually fetch these to
+# render pages properly for ranking purposes - blocking that would make Google see broken,
+# unstyled pages, which hurts SEO far more than any junk-URL crawl budget waste would. A more
+# specific Allow rule beats a broader Disallow rule in robots.txt, so this keeps exactly that
+# one pattern crawlable while the rule below blocks every other "?" URL.
+Allow: /*?v=*
 
-# SEO-NOTE: same reasoning as the ?list= rule above - "_bdsid" and "_bd_prev_page" aren't
-# parameters this site reads or generates anywhere (this site doesn't even have a detail.php,
-# which showed up as the referring page in one example). They're bot/scraper cruft being
-# appended to crawled URLs, landing in Search Console as more junk duplicate-URL noise.
-# Using "/*_bdsid=*" (no literal "?" right before it) rather than "/*?_bdsid=*" so this still
-# matches when the parameter isn't first in the query string, e.g. "...&_bdsid=...".
-Disallow: /*_bdsid=*
-Disallow: /*_bd_prev_page=*
+# SEO-NOTE: every crawlable page on this site already has a canonical tag pointing at its clean,
+# query-string-free URL (see includes/header.php), and nothing here serves different indexable
+# content based on a query string - so there's no reason for Google to ever crawl or index a
+# "?"-suffixed variant of a page. This one rule replaces what used to be a growing list of
+# specific junk patterns (?list=, _bdsid=, _bd_prev_page=...) and covers whatever bots invent
+# next too, instead of adding a new line here every time Search Console shows another one.
+# WHY this doesn't affect real ad campaigns: robots.txt only controls search-engine crawling,
+# not what a real visitor's browser can load - a Google or Meta ad linking to a page with
+# ?utm_source=... or ?gclid=... still works exactly the same for every person who clicks it, and
+# GA4/conversion tracking reads those parameters client-side regardless of this file. This rule
+# only stops Googlebot from separately crawling and indexing that parameterized copy of a page,
+# which the canonical tag was already telling it to skip anyway.
+Disallow: /*?
 
 Sitemap: https://www.adstime.in/sitemap.xml
