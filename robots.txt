@@ -11,4 +11,13 @@ Allow: /
 # only this specific junk pattern is blocked, nothing else.
 Disallow: /*?list=*
 
+# SEO-NOTE: same reasoning as the ?list= rule above - "_bdsid" and "_bd_prev_page" aren't
+# parameters this site reads or generates anywhere (this site doesn't even have a detail.php,
+# which showed up as the referring page in one example). They're bot/scraper cruft being
+# appended to crawled URLs, landing in Search Console as more junk duplicate-URL noise.
+# Using "/*_bdsid=*" (no literal "?" right before it) rather than "/*?_bdsid=*" so this still
+# matches when the parameter isn't first in the query string, e.g. "...&_bdsid=...".
+Disallow: /*_bdsid=*
+Disallow: /*_bd_prev_page=*
+
 Sitemap: https://www.adstime.in/sitemap.xml
