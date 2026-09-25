@@ -211,7 +211,7 @@ require __DIR__ . '/../includes/header.php';
     <div>
       <span class="eyebrow">Digital Marketing Agency, Noida</span>
       <h1>The <span class="text-gradient">Best Digital Marketing Agency in Noida</span> for Businesses That Want to See Real Numbers</h1>
-      <p class="lead">AdsTime is a full-funnel digital marketing agency based in Noida, running paid media, SEO, content, email, automation, and WhatsApp marketing - plus the web development that supports all of it - for businesses across Sector 62, Sector 18, the Noida Expressway, and the wider NCR.</p>
+      <p class="lead">AdsTime is a digital marketing agency based in Noida, running paid media, SEO, content, email, automation, and WhatsApp marketing - plus the web development that supports all of it - for businesses across Sector 62, Sector 18, the Noida Expressway, and the wider NCR.</p>
       <div class="nd-hero__actions">
         <a href="<?php echo BASE_PATH; ?>/contact" class="btn btn--primary">Get a free growth audit</a>
         <a href="#nd-services" class="btn btn--ghost">See what we run</a>
@@ -308,7 +308,7 @@ require __DIR__ . '/../includes/header.php';
       <div class="card">
         <div class="card__icon" style="background:rgba(240,70,107,0.1)"><svg viewBox="0 0 24 24" fill="none" stroke="#F0466B" stroke-width="1.8"><path d="M4 6h16M4 12h10M4 18h13"/></svg></div>
         <h3>Reports you can actually read</h3>
-        <p>Cost per lead, ROAS, and pipeline influenced - in plain numbers, not "impressions" and "engagement" dressed up to look like progress.</p>
+        <p>Cost per lead, ROAS, and real sales - in plain numbers, not "impressions" and "engagement" dressed up to look like progress.</p>
       </div>
       <div class="card">
         <div class="card__icon" style="background:rgba(30,174,85,0.1)"><svg viewBox="0 0 24 24" fill="none" stroke="#1EAE55" stroke-width="1.8"><path d="M20 6 9 17l-5-5"/></svg></div>
@@ -397,7 +397,7 @@ require __DIR__ . '/../includes/header.php';
       <div class="nd-industry">
         <div class="nd-industry__icon" style="background:rgba(249,115,22,0.1)"><svg viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="1.8"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2.5 4h2.5l2.4 11.5h9.9L20 8H6.3"/></svg></div>
         <h3>D2C &amp; e-commerce</h3>
-        <p>Brands shipping from Noida's warehousing belt, living on repeat purchase rate and blended CAC, not first-order volume alone.</p>
+        <p>Brands shipping from Noida's warehousing belt, living on repeat purchase rate and cost per customer, not first-order volume alone.</p>
       </div>
       <div class="nd-industry">
         <div class="nd-industry__icon" style="background:rgba(30,174,85,0.1)"><svg viewBox="0 0 24 24" fill="none" stroke="#1EAE55" stroke-width="1.8"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
@@ -437,7 +437,7 @@ require __DIR__ . '/../includes/header.php';
       <div class="card">
         <div class="card__icon">4</div>
         <h3>Track, report &amp; iterate</h3>
-        <p>One dashboard with blended attribution, plus a monthly session to adjust the mix around what's working.</p>
+        <p>One dashboard that shows which channel actually deserves credit for a sale, plus a monthly session to adjust the mix around what's working.</p>
       </div>
     </div>
   </div>
@@ -453,7 +453,7 @@ require __DIR__ . '/../includes/header.php';
     <div class="stats" id="ndStats">
       <div class="stat">
         <div class="stat__num"><span class="nd-counter" data-count="6.2" data-suffix="x">0</span></div>
-        <div class="stat__label">avg. blended ROAS across paid channels</div>
+        <div class="stat__label">average return on ad spend across paid channels</div>
       </div>
       <div class="stat">
         <div class="stat__num"><span class="nd-counter" data-count="8" data-suffix="">0</span></div>
@@ -465,7 +465,7 @@ require __DIR__ . '/../includes/header.php';
       </div>
       <div class="stat">
         <div class="stat__num"><span>&#8377;3.3Cr+</span></div>
-        <div class="stat__label">pipeline influenced across channels in 2025</div>
+        <div class="stat__label">in sales tracked back to our work in 2025</div>
       </div>
     </div>
   </div>

@@ -2,7 +2,7 @@
 require_once __DIR__ . '/../includes/config.php';
 
 $page_title = 'Email Marketing Services & Agency | AdsTime';
-$meta_description = 'AdsTime runs email marketing as a full system - strategy, lifecycle flows, segmentation, deliverability (SPF, DKIM, DMARC), and template design, not just campaign sends. See our email marketing services and what clients say.';
+$meta_description = 'AdsTime runs email marketing as a full system - strategy, automated email flows, segmentation, deliverability (SPF, DKIM, DMARC), and template design, not just campaign sends. See our email marketing services and what clients say.';
 $canonical_path = '/services/email-marketing';
 
 // SEO-NOTE: FAQPage schema is added automatically by header.php whenever $faq_items is set -
@@ -10,11 +10,11 @@ $canonical_path = '/services/email-marketing';
 $faq_items = [
     [
         'q' => 'What\'s actually included in your email marketing services?',
-        'a' => 'Strategy and a real campaign calendar, lifecycle flows (welcome, abandonment, win-back, post-purchase), list segmentation, template design and email development, deliverability and authentication (SPF, DKIM, DMARC), and reporting tied to revenue - not just opens and clicks. Most agencies sell one or two of these; we run all of them as one system so a flow doesn\'t quietly break because nobody owns deliverability.',
+        'a' => 'Strategy and a real campaign calendar, automated email flows (welcome, abandoned cart, win-back, post-purchase), list segmentation, template design and email development, deliverability and authentication (SPF, DKIM, DMARC), and reporting tied to revenue - not just opens and clicks. Most agencies sell one or two of these; we run all of them as one system so an email flow doesn\'t quietly break because nobody owns deliverability.',
     ],
     [
         'q' => 'How much do email marketing services cost?',
-        'a' => 'For most small and mid-sized businesses, a realistic starting range covering strategy, 3-5 core lifecycle flows, and monthly campaign sends is Rs. 20,000-30,000/month, scaling with list size, the number of flows, and how much custom template design is involved. A one-time setup fee is common for the first month, when authentication, list migration, and initial flows are all being built at once.',
+        'a' => 'For most small and mid-sized businesses, a realistic starting range covering strategy, 3-5 core automated email flows, and monthly campaign sends is Rs. 20,000-30,000/month, scaling with list size, the number of flows, and how much custom template design is involved. A one-time setup fee is common for the first month, when authentication, list migration, and the first flows are all being built at once.',
     ],
     [
         'q' => 'What email platforms do you work with?',
@@ -168,7 +168,7 @@ require __DIR__ . '/../includes/header.php';
     <div class="hero__copy">
       <span class="eyebrow">Email Marketing</span>
       <h1>Email Marketing Services That Turn a List Into a <span class="text-gradient">Revenue Channel</span></h1>
-      <p class="lead">AdsTime runs email marketing as a full system - strategy, lifecycle flows, segmentation, and template design, backed by the deliverability work most agencies skip. As an email marketing agency, we set up SPF, DKIM, and DMARC properly, so campaigns land in the inbox instead of the spam folder.</p>
+      <p class="lead">AdsTime runs email marketing as a full system - strategy, automated email flows, segmentation, and template design, backed by the deliverability work most agencies skip. As an email marketing agency, we set up SPF, DKIM, and DMARC properly, so campaigns land in the inbox instead of the spam folder.</p>
       <div class="em-hero__actions">
         <a href="<?php echo BASE_PATH; ?>/contact" class="btn btn--primary">Get a free email audit</a>
         <a href="#em-work" class="btn btn--ghost">See what we run</a>
@@ -269,8 +269,8 @@ require __DIR__ . '/../includes/header.php';
       </div>
       <div class="card">
         <div class="card__icon" style="background:rgba(217,146,0,0.1)"><svg viewBox="0 0 24 24" fill="none" stroke="#D18900" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
-        <h3>Reporting &amp; revenue attribution</h3>
-        <p>Every campaign and flow tracked back to revenue and cost per acquisition, not just open rate - so we know what's actually earning its place.</p>
+        <h3>Reporting tied to revenue</h3>
+        <p>Every campaign and flow tracked back to actual sales and cost per customer, not just open rate - so we know what's actually earning its place.</p>
       </div>
     </div>
   </div>
@@ -356,7 +356,7 @@ require __DIR__ . '/../includes/header.php';
         <div class="em-bar__track"><div class="em-bar__fill" style="--em-bar-target: 14%;"></div></div>
       </div>
       <div class="em-bar">
-        <div class="em-bar__head"><strong>Reporting &amp; attribution</strong><span>8%</span></div>
+        <div class="em-bar__head"><strong>Reporting &amp; results</strong><span>8%</span></div>
         <div class="em-bar__track"><div class="em-bar__fill" style="--em-bar-target: 8%;"></div></div>
       </div>
     </div>
@@ -369,11 +369,11 @@ require __DIR__ . '/../includes/header.php';
     <div class="stats" id="emStats">
       <div class="stat">
         <div class="stat__num"><span class="em-counter" data-count="8" data-suffix="">0</span></div>
-        <div class="stat__label">years building email &amp; lifecycle programmes</div>
+        <div class="stat__label">years building email marketing programmes</div>
       </div>
       <div class="stat">
         <div class="stat__num"><span class="em-counter" data-count="6.2" data-suffix="x">0</span></div>
-        <div class="stat__label">average blended ROAS across automated channels</div>
+        <div class="stat__label">average return on ad spend across automated channels</div>
       </div>
       <div class="stat">
         <div class="stat__num"><span class="em-counter" data-count="94" data-suffix="%">0</span></div>
@@ -381,7 +381,7 @@ require __DIR__ . '/../includes/header.php';
       </div>
       <div class="stat">
         <div class="stat__num"><span>&#8377;3.3Cr+</span></div>
-        <div class="stat__label">pipeline influenced across channels in 2025</div>
+        <div class="stat__label">in sales tracked back to our work in 2025</div>
       </div>
     </div>
   </div>

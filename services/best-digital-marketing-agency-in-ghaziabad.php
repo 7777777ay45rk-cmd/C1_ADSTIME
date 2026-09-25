@@ -19,7 +19,7 @@ $faq_items = [
     ],
     [
         'q' => 'Do you have an office in Ghaziabad, or are you based elsewhere?',
-        'a' => 'We\'re based in Noida, a short drive across the NCR corridor from Vaishali and Kaushambi, and a fair number of our retainer clients are in Ghaziabad already, so we don\'t pretend to run a separate local office - we\'d rather be upfront about that than have you find out later. What that does mean in practice: strategy calls, reporting, and campaign management run the same way whether a client is in Raj Nagar Extension or Sahibabad, and an in-person meeting is always something we can arrange, not something we have to explain away.',
+        'a' => 'We\'re based in Noida, a short drive from Vaishali and Kaushambi, and a fair number of our retainer clients are in Ghaziabad already, so we don\'t pretend to run a separate local office - we\'d rather be upfront about that than have you find out later. What that does mean in practice: strategy calls, reporting, and campaign management run the same way whether a client is in Raj Nagar Extension or Sahibabad, and an in-person meeting is always something we can arrange, not something we have to explain away.',
     ],
     [
         'q' => 'We\'re a small business in Ghaziabad - will we actually get attention, or just be an account number?',
@@ -211,7 +211,7 @@ require __DIR__ . '/../includes/header.php';
     <div>
       <span class="eyebrow">Digital Marketing Agency, Ghaziabad</span>
       <h1>The <span class="text-gradient">Best Digital Marketing Agency in Ghaziabad</span> for Businesses That Want to See Real Numbers</h1>
-      <p class="lead">AdsTime is a full-funnel digital marketing agency serving Ghaziabad and the wider NCR, running paid media, SEO, content, email, automation, and WhatsApp marketing - plus the web development that supports all of it - for businesses across Raj Nagar Extension, Indirapuram, Vaishali, Kaushambi, and Sahibabad.</p>
+      <p class="lead">AdsTime is a digital marketing agency serving Ghaziabad and the wider NCR, running paid media, SEO, content, email, automation, and WhatsApp marketing - plus the web development that supports all of it - for businesses across Raj Nagar Extension, Indirapuram, Vaishali, Kaushambi, and Sahibabad.</p>
       <div class="nd-hero__actions">
         <a href="<?php echo BASE_PATH; ?>/contact" class="btn btn--primary">Get a free growth audit</a>
         <a href="#nd-services" class="btn btn--ghost">See what we run</a>
@@ -280,7 +280,7 @@ require __DIR__ . '/../includes/header.php';
     <div class="nd-prose">
       <p>If you're looking for the best digital marketing agency in Ghaziabad, the city itself makes that a genuinely varied brief. Sahibabad runs one of the largest industrial belts in western UP - engineering, auto components, plastics, electronics - while Raj Nagar Extension and Crossings Republik have turned into two of NCR's fastest-growing residential corridors, pulling in a steady wave of real estate developers and brokers. Indirapuram and Vaishali carry a fast-growing mix of retail, healthcare, and small IT/services businesses, and the older city market around Ghanta Ghar and Naya Bazar still anchors serious wholesale and trading volume. Every one of those businesses wants the same outcome: a marketing budget that turns into paying customers, run by a team that can explain exactly how it's working.</p>
       <p>AdsTime is that team. As a digital marketing agency serving Ghaziabad and the wider NCR, we run Google Ads and Meta Ads campaigns, SEO and local search, content marketing, email and WhatsApp marketing, marketing automation, and the web development that supports all of it - not as six separate vendors billing separately, but as one connected system managed by a single accountable team. Need a Google Ads agency for Ghaziabad that stops a Sahibabad manufacturer's account from bleeding budget on the wrong keywords? An SEO agency that gets a Raj Nagar Extension project ranking for the searches actual homebuyers type? A website fast enough to convert the traffic either channel sends it? All of it is handled under one roof, by people who talk to each other daily instead of a project manager relaying messages between freelancers.</p>
-      <p>What makes that work in practice is simple. We're upfront about being based in Noida, a short drive from Vaishali and Kaushambi across the NCR corridor, rather than pretending to run a Ghaziabad office we don't have - and a good number of our retainer clients are in Ghaziabad already, so an in-person meeting is always something we can arrange. We don't lock clients into long contracts - month-to-month is the default, and we'd rather earn a renewal than rely on a clause. And every report we send is built around cost per lead, ROAS, and pipeline, not impressions and engagement dressed up to look like progress. The sections below walk through exactly what we run, why clients stay, and what the results have actually looked like.</p>
+      <p>What makes that work in practice is simple. We're upfront about being based in Noida, a short drive from Vaishali and Kaushambi, rather than pretending to run a Ghaziabad office we don't have - and a good number of our retainer clients are in Ghaziabad already, so an in-person meeting is always something we can arrange. We don't lock clients into long contracts - month-to-month is the default, and we'd rather earn a renewal than rely on a clause. And every report we send is built around cost per lead, ROAS, and real sales, not impressions and engagement dressed up to look like progress. The sections below walk through exactly what we run, why clients stay, and what the results have actually looked like.</p>
     </div>
     <blockquote class="nd-callout">"The agencies worth keeping aren't the ones that call themselves the best &mdash; they're the ones you can still get a straight answer from six months in."</blockquote>
   </div>
@@ -308,7 +308,7 @@ require __DIR__ . '/../includes/header.php';
       <div class="card">
         <div class="card__icon" style="background:rgba(240,70,107,0.1)"><svg viewBox="0 0 24 24" fill="none" stroke="#F0466B" stroke-width="1.8"><path d="M4 6h16M4 12h10M4 18h13"/></svg></div>
         <h3>Reports you can actually read</h3>
-        <p>Cost per lead, ROAS, and pipeline influenced - in plain numbers, not "impressions" and "engagement" dressed up to look like progress.</p>
+        <p>Cost per lead, ROAS, and real sales - in plain numbers, not "impressions" and "engagement" dressed up to look like progress.</p>
       </div>
       <div class="card">
         <div class="card__icon" style="background:rgba(30,174,85,0.1)"><svg viewBox="0 0 24 24" fill="none" stroke="#1EAE55" stroke-width="1.8"><path d="M20 6 9 17l-5-5"/></svg></div>
@@ -437,7 +437,7 @@ require __DIR__ . '/../includes/header.php';
       <div class="card">
         <div class="card__icon">4</div>
         <h3>Track, report &amp; iterate</h3>
-        <p>One dashboard with blended attribution, plus a monthly session to adjust the mix around what's working.</p>
+        <p>One dashboard that shows which channel actually deserves credit for a sale, plus a monthly session to adjust the mix around what's working.</p>
       </div>
     </div>
   </div>
@@ -453,7 +453,7 @@ require __DIR__ . '/../includes/header.php';
     <div class="stats" id="ndStats">
       <div class="stat">
         <div class="stat__num"><span class="nd-counter" data-count="6.2" data-suffix="x">0</span></div>
-        <div class="stat__label">avg. blended ROAS across paid channels</div>
+        <div class="stat__label">average return on ad spend across paid channels</div>
       </div>
       <div class="stat">
         <div class="stat__num"><span class="nd-counter" data-count="8" data-suffix="">0</span></div>
@@ -465,7 +465,7 @@ require __DIR__ . '/../includes/header.php';
       </div>
       <div class="stat">
         <div class="stat__num"><span>&#8377;3.3Cr+</span></div>
-        <div class="stat__label">pipeline influenced across channels in 2025</div>
+        <div class="stat__label">in sales tracked back to our work in 2025</div>
       </div>
     </div>
   </div>

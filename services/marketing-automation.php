@@ -2,7 +2,7 @@
 require_once __DIR__ . '/../includes/config.php';
 
 $page_title = 'Marketing Automation Agency & Automation Services | AdsTime';
-$meta_description = 'AdsTime is a marketing automation agency running CRM workflows, lead scoring, and cross-channel journeys as one system - so leads get followed up automatically, not manually. See our marketing automation services and what clients say.';
+$meta_description = 'AdsTime is a marketing automation agency running CRM workflows, lead scoring, and follow-up journeys across every channel as one system - so leads get followed up automatically, not manually. See our marketing automation services and what clients say.';
 $canonical_path = '/services/marketing-automation';
 
 // SEO-NOTE: FAQPage schema is added automatically by header.php whenever $faq_items is set -
@@ -151,7 +151,7 @@ require __DIR__ . '/../includes/header.php';
     <div class="hero__copy">
       <span class="eyebrow">Marketing Automation</span>
       <h1>A <span class="text-gradient">Marketing Automation Agency</span> That Follows Up on Every Lead, Automatically</h1>
-      <p class="lead">AdsTime is a marketing automation agency running your CRM, lead scoring, and cross-channel journeys as one system - marketing automation services built so a lead gets a response the moment they show interest, not whenever someone remembers to check the inbox.</p>
+      <p class="lead">AdsTime is a marketing automation agency running your CRM, lead scoring, and follow-up across every channel as one system - marketing automation services built so a lead gets a response the moment they show interest, not whenever someone remembers to check the inbox.</p>
       <div class="ma-hero__actions">
         <a href="<?php echo BASE_PATH; ?>/contact" class="btn btn--primary">Get a free automation audit</a>
         <a href="#ma-work" class="btn btn--ghost">See what we run</a>
@@ -248,7 +248,7 @@ require __DIR__ . '/../includes/header.php';
       </div>
       <div class="card">
         <div class="card__icon" style="background:rgba(124,58,237,0.1)"><svg viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="1.8"><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.2 10.9l7.6-3.8M8.2 13.1l7.6 3.8"/></svg></div>
-        <h3>Cross-channel journey mapping</h3>
+        <h3>One journey across every channel</h3>
         <p>One journey that follows a customer from first click to repeat purchase across ads, email, and WhatsApp - instead of three teams running three disconnected sequences.</p>
       </div>
       <div class="card">
@@ -270,7 +270,7 @@ require __DIR__ . '/../includes/header.php';
   <div class="container">
     <div class="section-head center">
       <span class="eyebrow">Where the workflows actually go</span>
-      <h2>A typical automation mix, before it's tuned to your funnel</h2>
+      <h2>A typical automation mix, before it's tuned to your business</h2>
     </div>
     <div class="ma-bars" id="maBars">
       <div class="ma-bar">
@@ -290,7 +290,7 @@ require __DIR__ . '/../includes/header.php';
         <div class="ma-bar__track"><div class="ma-bar__fill" style="--ma-bar-target: 12%;"></div></div>
       </div>
       <div class="ma-bar">
-        <div class="ma-bar__head"><strong>Reporting &amp; attribution</strong><span>8%</span></div>
+        <div class="ma-bar__head"><strong>Reporting &amp; results</strong><span>8%</span></div>
         <div class="ma-bar__track"><div class="ma-bar__fill" style="--ma-bar-target: 8%;"></div></div>
       </div>
     </div>
@@ -307,7 +307,7 @@ require __DIR__ . '/../includes/header.php';
       </div>
       <div class="stat">
         <div class="stat__num"><span class="ma-counter" data-count="6.2" data-suffix="x">0</span></div>
-        <div class="stat__label">average blended ROAS across automated channels</div>
+        <div class="stat__label">average return on ad spend across automated channels</div>
       </div>
       <div class="stat">
         <div class="stat__num"><span class="ma-counter" data-count="94" data-suffix="%">0</span></div>
@@ -315,7 +315,7 @@ require __DIR__ . '/../includes/header.php';
       </div>
       <div class="stat">
         <div class="stat__num"><span>&#8377;3.3Cr+</span></div>
-        <div class="stat__label">pipeline influenced across channels in 2025</div>
+        <div class="stat__label">in sales tracked back to our work in 2025</div>
       </div>
     </div>
   </div>
